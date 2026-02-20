@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref, watch } from "vue";
+import { onMounted, onUnmounted, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import ProductDetails from "@/components/ProductDetails.vue";
 import ProductCard from "@/components/ProductCard.vue";
@@ -22,29 +22,17 @@ const props = defineProps({
 });
 
 const route = useRoute();
-const product = ref(null);
-const related = ref([]);
 const emit = defineEmits(["buy"]);
 
-function findProduct() {
-  const id = Number(route.params.id);
-  product.value = props.products.find((p) => p.id === id) || null;
-  related.value = props.products.filter((p) => p.id !== id);
-}
+const productId = computed(() => Number(route.params.id));
+const product = computed(() => props.products.find((p) => p.id === productId.value) || null);
+const related = computed(() => props.products.filter((p) => p.id !== productId.value));
 
 onMounted(() => {
-  findProduct();
   console.log(`ProductView mounted for ID: ${route.params.id}`);
 });
 
 onUnmounted(() => console.log("ProductView unmounted"));
-
-watch(
-  () => route.params.id,
-  () => {
-    findProduct();
-  },
-);
 
 function onBuy(productId) {
   emit("buy", productId);

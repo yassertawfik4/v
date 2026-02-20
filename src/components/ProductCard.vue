@@ -49,12 +49,12 @@ onUnmounted(() => console.log(`ProductCard unmounted — id: ${product.id}`));
           </div>
 
           <div class="card-actions justify-end">
-            <router-link
+            <RouterLink
               :to="{ name: 'Product', params: { id: product.id } }"
               class="btn btn-primary"
             >
               View Product
-            </router-link>
+            </RouterLink>
           </div>
         </div>
       </div>
