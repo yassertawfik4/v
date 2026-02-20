@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref, computed } from "vue";
+import { onMounted, onUnmounted, computed } from "vue";
 import { useRoute } from "vue-router";
 import ProductDetails from "@/components/ProductDetails.vue";
 import ProductCard from "@/components/ProductCard.vue";

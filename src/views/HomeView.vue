@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, toRefs } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import CarouselBanner from "@/components/CarouselBanner.vue";
 import ProductCard from "@/components/ProductCard.vue";
 
